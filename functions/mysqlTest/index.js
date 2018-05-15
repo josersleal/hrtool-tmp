@@ -1,10 +1,68 @@
-// TODO: implement agaisnt local db
-// TODO: envs and aws
 'use strict';
-var mysql = require('mysql2');
-var config = require('./db-config.json');
+import config from './db-config.json';
+import Sequelize from 'sequelize';
 
-var pool = mysql.createPool({
+const sequelize = new Sequelize('test-employees', 'app', 'app', {
+    host: 'localhost',
+    port: 3306,
+    logging: true, // Disable the logging. It is consuming the time on lambda function.
+    dialect: 'mysql',
+    define: {
+        timestamps: false
+    },
+    operatorsAliases: false,
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 20000,
+        idle: 10000
+    }
+});
+
+// create model
+const Employee = sequelize.define(
+    'employee',
+    {
+        name: {
+            type: Sequelize.STRING,
+            field: 'emp_name'
+        }
+    },
+    {
+        freezeTableName: true
+    }
+);
+
+export async function handler(event, context, callback) {
+    context.callbackAwaitsForEmptyEventLoop = false;
+    try {
+        const result = await Employee.findAll({
+            where:{id:2}
+        });
+        console.log(result);
+        callback(null, result);
+    } catch (error) {
+        console.log(error);
+        callback(null, error);
+    }
+}
+
+/*
+export async function handler(event, context, callback) {
+    context.callbackAwaitsForEmptyEventLoop = false;
+    try {
+        const result = await sequelize.authenticate();
+        console.log(result);
+        callback(null, result);
+    } catch (error) {
+        console.log(error);
+        callback(null, error);
+    }
+} */
+/* 
+import { createPool } from "mysql2";
+
+var pool = createPool({
     host: 'localhost',
     user: 'app',
     password: 'app',
@@ -35,3 +93,4 @@ export async function handler(event, context, callback) {
         );
     });
 }
+ */
