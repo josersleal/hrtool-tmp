@@ -1,3 +1,11 @@
+
+Temporarly at 
+git remote get-url --all origin
+https://github.com/josersleal/hrtool-tmp.git
+
+Bellow original only
+
+
 # Serverless Node.js Starter
 
 A Serverless starter that adds ES7 syntax, serverless-offline, environment variables, and unit test support. Part of the [Serverless Stack](http://serverless-stack.com) guide.
