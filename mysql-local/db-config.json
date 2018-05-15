@@ -1,0 +1,6 @@
+{
+    "dbhost": "127.0.0.1:3306",
+    "dbname": "employee",
+    "dbuser": "root",
+    "dbpassword": "root"
+}
