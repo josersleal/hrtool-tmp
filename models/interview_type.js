@@ -8,8 +8,9 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     interview_type: {
-      type: DataTypes.STRING(40),
-      allowNull: true
+      type: "SET('PERSONAL','PROFESSIONAL','FINAL')",
+      allowNull: false,
+      unique: true
     }
   }, {
     tableName: 'interview_type'

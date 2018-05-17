@@ -8,8 +8,9 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     role: {
-      type: DataTypes.STRING(30),
-      allowNull: true
+      type: "SET('CANDIDATE','RECRUITER','HIRING MANAGER')",
+      allowNull: false,
+      unique: true
     }
   }, {
     tableName: 'role'

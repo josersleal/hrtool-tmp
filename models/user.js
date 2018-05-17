@@ -7,20 +7,17 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
+    email: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      unique: true
+    },
     first_name: {
       type: DataTypes.STRING(60),
       allowNull: true
     },
     last_name: {
       type: DataTypes.STRING(60),
-      allowNull: true
-    },
-    email: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    account_valid: {
-      type: DataTypes.INTEGER(4),
       allowNull: true
     },
     access_start: {
@@ -31,8 +28,24 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATEONLY,
       allowNull: false
     },
-    role_id: {
+    phone_number: {
+      type: DataTypes.STRING(20),
+      allowNull: true
+    },
+    attachment_link: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    Overall_status_id: {
       type: DataTypes.INTEGER(11),
+      allowNull: false,
+      references: {
+        model: 'overall_status',
+        key: 'id'
+      }
+    },
+    account_valid: {
+      type: DataTypes.INTEGER(1),
       allowNull: true
     }
   }, {

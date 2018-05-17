@@ -19,53 +19,17 @@ const sequelize = new Sequelize('hrrt', 'app', 'app', {
     }
 });
 
-let Candidates = require('./../../models/candidate')(
+let Users = require('./../../models/user')(
     sequelize,
     Sequelize
 );
 
-// create model
-/* 
-const Candidates = sequelize.define('candidates', {
-    JobNumber: {
-        type: Sequelize.TINYINT
-    },
-    LastName: {
-        type: Sequelize.STRING
-    },
-    FirstName: {
-        type: Sequelize.STRING
-    },
-    Recruiter: {
-        type: Sequelize.STRING
-    },
-    ProfessionalInterview: {
-        type: Sequelize.STRING
-    },
-    PersonalInterview: {
-        type: Sequelize.STRING
-    },
-    FinalInterview: {
-        type: Sequelize.STRING
-    },
-    OverallStatus: {
-        type: Sequelize.STRING
-    },
-    Phone: {
-        type: Sequelize.STRING
-    },
-    Email: {
-        type: Sequelize.STRING
-    },
-    Attachment: {
-        type: Sequelize.TINYINT
-    }
-}); */
+
 
 export async function handler(event, context, callback) {
     context.callbackAwaitsForEmptyEventLoop = false;
     try {
-        const result = await Candidates.findAll({
+        const result = await Users.findAll({
             limit: 10 
         });
         console.log(result);

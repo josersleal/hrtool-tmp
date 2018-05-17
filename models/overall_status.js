@@ -8,8 +8,9 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     status_name: {
-      type: DataTypes.STRING(30),
-      allowNull: true
+      type: "SET('TYPE1','TYPE2','TYPE3')",
+      allowNull: false,
+      unique: true
     }
   }, {
     tableName: 'overall_status'
