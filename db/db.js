@@ -3,7 +3,7 @@ import config from './db-environments.json';
 import Sequelize from 'sequelize';
 
 // TODO: magic strings to own class
-const environment = process.env.SOME_ENV_FROM_GODKNOWS | 'local';
+const environment = process.env.SOME_ENV_FROM_GODKNOWS || 'local';
 const dbConfig = require('./db-environments.json')[environment];
 
 let db = {};
@@ -29,7 +29,7 @@ const sequelize = new Sequelize(
         }
     }
 );
-module.exports = {
+export default {
     'Sequelize': Sequelize,
     'sequelize': sequelize
-}
+};

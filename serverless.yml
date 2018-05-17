@@ -28,19 +28,23 @@ provider:
   #environment: ${file(env.yml):${self:provider.stage}}
 
 functions:
-  # candidate:
-  #   handler: functions/candidates/candidate-get.handler
-  #   events:
-  #     - http:
-  #         path: candidates/get/{id}
-  #         method: GET
+  candidate-delete:
+    handler: functions/candidates/delete.handler
+  candidate-insert:
+    handler: functions/candidates/insert.handler
+  candidate:
+    handler: functions/candidates/candidate-get.handler
+    events:
+      - http:
+          path: candidates/get/{id}
+          method: GET
   #         authorizer: aws_iam
-  # candidates:
-  #   handler: functions/candidates/candidates-list.handler
-  #   events:
-  #     - http:
-  #         path: candidates/get
-  #         method: GET
+  candidates:
+    handler: functions/candidates/candidates-list.handler
+    events:
+      - http:
+          path: candidates/get
+          method: GET
   #         authorizer: aws_iam
   mysqlTest:
     handler: functions/mysqlTest/index.handler
