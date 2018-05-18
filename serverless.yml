@@ -28,10 +28,10 @@ provider:
   #environment: ${file(env.yml):${self:provider.stage}}
 
 functions:
-  candidate-delete:
-    handler: functions/candidates/delete.handler
   candidate-insert:
-    handler: functions/candidates/insert.handler
+    handler: functions/candidates/candidate-insert.handler
+  candidate-delete:
+    handler: functions/candidates/candidate-delete.handler
   candidate:
     handler: functions/candidates/candidate-get.handler
     events:

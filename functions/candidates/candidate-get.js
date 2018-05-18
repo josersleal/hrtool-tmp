@@ -14,7 +14,7 @@ export async function handler(event, context, callback) {
     context.callbackAwaitsForEmptyEventLoop = false;
     try {
         const result = await Users.findOne({
-          where: { id: event.pathParameters.id },
+            where: { id: event.pathParameters.id },
             raw: true
         });
         /* const result = await db.sequelize.query(
