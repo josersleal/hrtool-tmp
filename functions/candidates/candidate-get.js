@@ -18,7 +18,7 @@ export async function handler(event, context, callback) {
             raw: true
         });
         /* const result = await db.sequelize.query(
-            "SELECT * FROM hrrt.user u JOIN hrrt.user_has_role uhr ON u.id = uhr.User_id JOIN hrrt.role r  ON r.id = uhr.Role_id	where r.role = 'Candidate'",
+              "SELECT * FROM hrrt.user u JOIN hrrt.user_has_role uhr ON u.id = uhr.User_id JOIN hrrt.role r  ON r.id = uhr.Role_id	where r.role = 'Candidate'",
             { type: db.sequelize.QueryTypes.SELECT }
         ); */
         console.log(result);
